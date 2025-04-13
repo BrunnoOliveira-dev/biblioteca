@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Biblioteca - Home</title>
+		<link rel="stylesheet" href="/styles/home.css" />
+	</head>
+	<body>
+		<header class="cabecalho">
+			<div class="banner">
+				<div class="logo">
+					<img
+						src="../src/img/image.png"
+						alt="Banner da Biblioteca"
+						class="logo-imagem"
+					/>
+				</div>
+			</div>
+		</header>
+		<main class="principal">
+			<section id="pesquisa" class="secao">
+				<div class="container">
+					<h2 class="titulo-secao">Encontre seu Próximo Livro</h2>
+					<div class="barra-pesquisa">
+						<input
+							type="text"
+							id="barra-pesquisa"
+							placeholder="Título, autor ou assunto..."
+						/>
+						<button id="botao-pesquisa">Buscar</button>
+					</div>
+				</div>
+			</section>
+			<section id="login" class="secao">
+				<div class="container">
+					<h2 class="titulo-secao">Acesso à Biblioteca</h2>
+					<form id="formulario-login">
+						<div class="campo-formulario">
+							<label for="usuario">Usuário:</label>
+							<input type="text" id="usuario" name="usuario" required />
+						</div>
+						<div class="campo-formulario">
+							<label for="senha">Senha:</label>
+							<input type="password" id="senha" name="senha" required />
+						</div>
+						<button type="submit" class="botao-destaque">Entrar</button>
+					</form>
+				</div>
+			</section>
+		</main>
+		<footer class="rodape">
+			<div class="container">
+				<p>&copy; 2023 Biblioteca Encantada. Todos os direitos reservados.</p>
+			</div>
+		</footer>
+	</body>
+</html>

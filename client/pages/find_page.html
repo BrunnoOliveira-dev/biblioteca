@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Biblioteca - Pesquisa</title>
+	</head>
+	<body>
+		<div class="search-container">
+			<input type="text" id="searchInput" placeholder="Pesquisar livros..." />
+		</div>
+		<div class="book-container" id="bookContainer">
+			<!-- Livros serão inseridos aqui dinamicamente -->
+		</div>
+
+		<script>
+			// Lista de livros (poderia vir de uma API)
+			const livros = [
+				{
+					titulo: "O Senhor dos Anéis",
+					autor: "J.R.R. Tolkien",
+					editora: "HarperCollins",
+					ano: 1954,
+					imagem:
+						"https://m.media-amazon.com/images/I/81t2CVWEsUL._SL1500_.jpg",
+					disponivel: true,
+				},
+				{
+					titulo: "1984",
+					autor: "George Orwell",
+					editora: "Companhia das Letras",
+					ano: 1949,
+					imagem:
+						"https://m.media-amazon.com/images/I/71kxa1-0mfL._SL1500_.jpg",
+					disponivel: false,
+				},
+				{
+					titulo: "Dom Casmurro",
+					autor: "Machado de Assis",
+					editora: "Principis",
+					ano: 1899,
+					imagem:
+						"https://m.media-amazon.com/images/I/81Jw3a67exL._SL1500_.jpg",
+					disponivel: true,
+				},
+			];
+
+			// Função para renderizar livros na página
+			function renderizarLivros(lista) {
+				const container = document.getElementById("bookContainer");
+				container.innerHTML = ""; // Limpa os livros antes de renderizar novamente
+
+				lista.forEach((livro) => {
+					const livroElemento = document.createElement("div");
+					livroElemento.classList.add("book");
+
+					livroElemento.innerHTML = `
+                    <img src="${livro.imagem}" alt="Capa do livro">
+                    <div class="book-details">
+                        <h3>${livro.titulo}</h3>
+                        <p>Autor: ${livro.autor}</p>
+                        <p>Detalhes de Publicação: ${livro.editora}, ${
+						livro.ano
+					}</p>
+                        <p class="availability" style="color: ${
+													livro.disponivel ? "green" : "red"
+												};">
+                            ${livro.disponivel ? "Disponível" : "Indisponível"}
+                        </p>
+                    </div>
+                `;
+					container.appendChild(livroElemento);
+				});
+			}
+
+			// Função para filtrar livros com base no texto digitado
+			function filtrarLivros() {
+				const termo = document
+					.getElementById("searchInput")
+					.value.toLowerCase();
+				const livrosFiltrados = livros.filter(
+					(livro) =>
+						livro.titulo.toLowerCase().includes(termo) ||
+						livro.autor.toLowerCase().includes(termo)
+				);
+				renderizarLivros(livrosFiltrados);
+			}
+
+			// Evento de input para filtrar conforme o usuário digita
+			document
+				.getElementById("searchInput")
+				.addEventListener("input", filtrarLivros);
+
+			// Renderiza os livros ao carregar a página
+			renderizarLivros(livros);
+		</script>
+	</body>
+</html>
